@@ -1,0 +1,18 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane fx:id="rootpane" prefHeight="NaN" prefWidth="NaN" styleClass="root"
+            xmlns:fx="http://javafx.com/fxml/1"
+            xmlns="http://javafx.com/javafx/8"
+            fx:controller="sample.controller.RootController">
+    <padding>
+        <Insets bottom="10" left="25" right="25" top="25" />
+    </padding>
+
+    <Text fx:id="root_text" layoutX="100" layoutY="100" BorderPane.alignment="CENTER" fontSmoothingType="LCD" onMouseEntered="#actionText"/>
+
+</BorderPane>
+
