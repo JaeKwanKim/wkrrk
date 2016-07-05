@@ -1,18 +1,160 @@
-<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.VBox?>
+<VBox fx:id="rootpane" styleClass="root" xmlns:fx="http://javafx.com/fxml/1"
+      xmlns="http://javafx.com/javafx/8"
+      fx:controller="sample.controller.RootController" >
+    <MenuBar fx:id="menuBar" onKeyPressed="#handleKeyInput">
+        <menus>
+            <Menu text="File">
+                <items>
+                    <MenuItem text="New" onAction="#handleAboutAction">
+                        <accelerator>
+                            <KeyCodeCombination alt="DOWN" code="N" control="UP" meta="UP" shift="DOWN" shortcut="UP"/>
+                        </accelerator>
+                    </MenuItem>
+                    <MenuItem text="Open"/>
+                    <MenuItem text="Open Recent"/>
+                    <MenuItem text="Save"/>
+                    <MenuItem text="Save As"/>
+                    <Menu text="export">
+                        <MenuItem text="html" />
+                        <MenuItem text="hwp"/>
+                        <MenuItem text="Doc"/>
+                        <MenuItem text="pdf"/>
+                        <MenuItem text="txt"/>
+                    </Menu>
+                    <SeparatorMenuItem  />
+                    <MenuItem text="Setting"/>
+                    <MenuItem text="Print.."/>
+                    <MenuItem text="Exit"/>
+                </items>
+            </Menu>
+            <Menu text="Edit">
+                <items>
+                    <MenuItem text="Undo"/>
+                    <MenuItem text="Redo"/>
+                    <MenuItem text="Copy"/>
+                    <MenuItem text="Cut"/>
+                    <MenuItem text="Paste"/>
+                    <SeparatorMenuItem />
+                    <MenuItem text="Find" />
+                    <MenuItem text="Select All" />
+                    <MenuItem text="Join Line" />
+                    <MenuItem text="Duplicate Line" />
+                </items>
+            </Menu>
+            <Menu text="View">
+                <items>
+                    <Menu text="Tool Windows" >
+                        <MenuItem text="Project" />
+                        <MenuItem text="Favorites" />
+                        <MenuItem text="Run" />
+                        <MenuItem text="Todo" />
+                    </Menu>
+                    <MenuItem text="Recent Files" />
+                    <MenuItem text="Switcher" />
+                    <MenuItem text="Recent Changes.." />
+                    <SeparatorMenuItem />
+                    <MenuItem text="Quick Switch Scheme" />
+                    <Menu text="Screen Mode">
+                        <MenuItem text="Enter Presentation Mode" />
+                        <MenuItem text="Enter Distraction Free Mode" />
+                        <MenuItem text="Enter Full Screen" />
+                    </Menu>
+                </items>
+            </Menu>
+            <Menu text="Navigate">
+                <items>
+                    <MenuItem text="Class" />
+                    <MenuItem text="File" />
+                    <MenuItem text="Symbol" />
+                    <MenuItem text="Line" />
+                    <SeparatorMenuItem />
+                    <MenuItem text="Back" />
+                    <MenuItem text="Forward" />
+                    <MenuItem text="Last Edit Location" />
+                    <MenuItem text="Bookmarks" />
+                    <MenuItem text="Next Sentence" />
+                    <MenuItem text="Previous Sentence" />
+                </items>
+            </Menu>
+            <Menu text="Code">
+                <items>
+                    <Menu text="Generate">
+                        <MenuItem text="Notes" />
+                        <MenuItem text="CopyRight" />
+                    </Menu>
+                    <MenuItem text="Insert Live Template" />
+                    <Menu text="Comment">
+                        <MenuItem text="Line Comments" />
+                        <MenuItem text="Block Comments" />
+                    </Menu>
+                    <MenuItem text="Auto Indent LInes" />
+                    <MenuItem text="Move Statement Down/Up" />
+                    <MenuItem text="Move Line Down/Up" />
+                </items>
+            </Menu>
+            <Menu text="Analyze">
+                <items>
+                    <MenuItem text="Inspect Code" />
+                    <MenuItem text="Code Cleanup" />
+                </items>
+            </Menu>
+            <Menu text="Refactor">
+                <items>
+                    <MenuItem text="Rename" />
+                    <MenuItem text="Move" />
+                    <MenuItem text="Copy" />
+                    <MenuItem text="Safe Delete" />
+                    <SeparatorMenuItem />
+                    <MenuItem text="Extract" />
+                    <MenuItem text="Find / Replace" />
+                </items>
+            </Menu>
+            <Menu text="VCS" >
+                <items>
+                    <MenuItem text="Local History" />
+                    <MenuItem text="Checkout From Version Control" />
+                    <MenuItem text="Import into VCS" />
+                </items>
+            </Menu>
+            <Menu text="Window">
+                <items>
+                    <MenuItem text="Minimize" />
+                    <MenuItem text="Zoom" />
+                    <SeparatorMenuItem />
+                    <MenuItem text="Active Tool Window" />
+                    <MenuItem text="Next Project Window" />
+                    <MenuItem text="Previous Project Window"/>
+                </items>
+            </Menu>
+            <Menu text="Help">
+                <items>
+                    <MenuItem text="Search" disable="true"/>
+                    <MenuItem text="Online Manual" visible="false"/>
+                    <MenuItem text="Help(page)"/>
+                    <SeparatorMenuItem />
+                    <MenuItem text="Getting Started" />
+                    <MenuItem text="Licenses" />
+                    <MenuItem text="Keymap Reference" />
+                    <MenuItem text="Tip of day" />
+                    <MenuItem text="About.." onAction="#handleAboutAction"/>
+                </items>
+            </Menu>
+            <Menu text="Auth" >
+                <items>
+                    <MenuItem text="Login" fx:id="LoginMenu" onAction="#LoginState" />
+                </items>
+            </Menu>
+        </menus>
+    </MenuBar>
 
-<BorderPane fx:id="rootpane" prefHeight="NaN" prefWidth="NaN" styleClass="root"
-            xmlns:fx="http://javafx.com/fxml/1"
-            xmlns="http://javafx.com/javafx/8"
-            fx:controller="sample.controller.RootController">
-    <padding>
-        <Insets bottom="10" left="25" right="25" top="25" />
-    </padding>
+    <!--<Button id="loginButton" onMouseClicked="#LoginState" text="로그인"/>-->
+    <TextArea fx:id="root_text" onMousePressed="#actionText"/>
+    <fx:script source="js/Login.js" ></fx:script>
+</VBox>
 
-    <Text fx:id="root_text" layoutX="100" layoutY="100" BorderPane.alignment="CENTER" fontSmoothingType="LCD" onMouseEntered="#actionText"/>
-
-</BorderPane>
 

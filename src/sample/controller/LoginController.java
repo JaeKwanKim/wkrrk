@@ -3,36 +3,37 @@ package sample.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import sample.Process.LinkProcess;
 import sample.model.UserMain;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ResourceBundle;
 
-import static sample.Main.manager;
+import static sample.Main.cacheManager;
 
-public class LoginController implements Initializable {
+public class LoginController extends GridPane {
+    @FXML private GridPane loginpane;
     @FXML private Text actiontarget;
     @FXML private TextField userid;
     @FXML private PasswordField userpassword;
-    @FXML private GridPane loginpane;
 
     private final ObjectMapper mapper =  new ObjectMapper();
-    private ResourceBundle resourceBundle;
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        resourceBundle = resources;
+
+    public LoginController() {
+//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/LoginView.fxml"));
+//        fxmlLoader.setRoot(this);
+//        fxmlLoader.setController(this);
+//
+//        try {
+//            fxmlLoader.load();
+//        } catch (IOException exception) {
+//            throw new RuntimeException(exception);
+//        }
     }
 
     @FXML
@@ -64,7 +65,7 @@ public class LoginController implements Initializable {
         try {
             UserMain user = mapper.readValue(url, UserMain.class);
             if (user.getPassword().equals(user.SHAEncoder(userpassword.getText()))) {
-                System.out.println(user);
+//                System.out.println(user);
                 actiontarget.setText(user.getAlias());
                 AfterLoginAndPageLoding((new LinkProcess(user)).setUserMain());
             } else {
@@ -114,23 +115,20 @@ public class LoginController implements Initializable {
     }
 
     private void AfterLoginAndPageLoding(UserMain userMain) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../view/RootView.fxml"));
-        Stage stage = (Stage) loginpane.getScene().getWindow();
-        stage.close();
-
+//        BorderPane pane = (BorderPane) getParent().lookup("#rootpane");
+//        Stage stage = (Stage) pane.getScene().getWindow();
+//        stage.close();
+        cacheManager.put("userMain", userMain);
+        cacheManager.put("message", "hello world");
+        System.out.println(userMain);
+//        stage.setTitle("사용자( "+ userMain.getAlias() + " )");
 //      이벤트 설정하기
 //        EventHandler eventHandler = (EventHandler<WindowEvent>) event -> {
 //
 //        };
 //
 //        stage.setOnHiding(eventHandler);
-        manager.put("userMain", userMain);
-        manager.put("message", "hello world");
 
-        System.out.println(manager.get("message"));
-        stage.setTitle("사용자 : " + userMain.getUserId());
-        stage.setScene(new Scene(root, 800, 600));
-        stage.show();
     }
 }
 

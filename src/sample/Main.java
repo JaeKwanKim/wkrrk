@@ -8,17 +8,16 @@ import javafx.stage.Stage;
 import sample.Process.PrivateCacheManager;
 
 public class Main extends Application {
-    public static PrivateCacheManager manager = PrivateCacheManager.getInstance();
+    public static PrivateCacheManager cacheManager = PrivateCacheManager.getInstance();
 
     @Override
     public void start(Stage stage) throws Exception{
-        Parent login = FXMLLoader.load(getClass().getResource("view/LoginView.fxml"));
-        //Stage > Scene > Container(Group) > Node 순...
-        stage.setTitle("FXML World");
-        stage.setScene(new Scene(login, 300, 275));
+        Parent root = FXMLLoader.load(getClass().getResource("view/RootView.fxml"));
+        stage.setTitle("작가 시스템");
+        Scene scene = new Scene(root, 800, 600);
+        stage.setScene(scene);
         stage.show();
     }
-
 
     public static void main(String[] args) {
         launch(args);

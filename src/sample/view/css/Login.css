@@ -3,6 +3,7 @@ root {
 }
 .root.login{
     -fx-background-image: url("http://docs.oracle.com/javafx/2/get_started/background.jpg");
+    -fx-padding: 20px;
 }
 .label {
     -fx-font-size: 12px;

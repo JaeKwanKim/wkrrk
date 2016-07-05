@@ -93,7 +93,11 @@ public class UserMain implements Serializable {
     public String toString() {
         return "유저넘버 : " + getUserNum() + "\n" +
                 "유저아이디 : " + getUserId() + "\n" +
-                "유저별칭 : " + getAlias() + "\n";
+                "유저별칭 : " + getAlias() + "\n" +
+                "유저이름 : " + userInfo.getFirstName() + userInfo.getLastName() + "\n" +
+                "유저이메일 : " + userInfo.getEmail() + "\n" +
+                "유저최초접속 : " + userAccessInfo.getFirst() + "\n" +
+                "유저아이피 : " + userAccessInfo.getIp() + "\n";
 
     }
 }

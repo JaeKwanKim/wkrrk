@@ -1,3 +1,10 @@
+// var js = document.createElement("script");
+//
+// js.type = "text/javascript";
+// js.src = jsFilePath;
+//
+// document.body.appendChild(js);
+
 var host = "localhost:8080";
 // function handleSubmitButtonAction() {
 //     $.ajax({
